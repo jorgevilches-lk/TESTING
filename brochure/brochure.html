@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>LAST KATA SYSTEM® — Brochure conceptual</title>
+<style>
+  @page { size: A4; margin: 0; }
+  :root{
+    --navy:#0F1B33; --navy2:#16264a; --ink:#0F1B33; --muted:#5b6578;
+    --steel:#c9d1de; --line:#dde2ea; --paper:#f6f7fa; --accent:#3d7bff; --warm:#e8b04a;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{font-family:'Inter',system-ui,sans-serif;color:var(--ink);-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .page{width:210mm;height:297mm;position:relative;overflow:hidden;page-break-after:always;background:#fff;padding:20mm 18mm 18mm}
+  .page:last-child{page-break-after:auto}
+  .dark{background:var(--navy);color:#fff}
+  .eyebrow{font-size:8.5pt;letter-spacing:.18em;text-transform:uppercase;font-weight:600;color:var(--accent)}
+  .dark .eyebrow{color:var(--steel)}
+  h1{font-size:30pt;line-height:1.08;font-weight:700;letter-spacing:-.02em}
+  h2{font-size:25pt;line-height:1.15;font-weight:700;letter-spacing:-.015em;margin:4mm 0 7mm}
+  h3{font-size:13pt;font-weight:650;margin-bottom:1.5mm}
+  p{font-size:11.5pt;line-height:1.6;color:var(--muted)}
+  .dark p{color:var(--steel)}
+  .lead{font-size:14pt;line-height:1.5;color:var(--ink)}
+  .folio{position:absolute;bottom:9mm;left:18mm;right:18mm;display:flex;justify-content:space-between;font-size:7.5pt;color:#8a93a5;border-top:1px solid var(--line);padding-top:3mm}
+  .dark .folio{border-color:#2a3a5e;color:#8f9cb8}
+
+  /* cover */
+  .cover{display:flex;flex-direction:column;align-items:center;justify-content:space-between;text-align:center;padding:0}
+  .cover .logo{width:128mm;height:128mm;margin-top:14mm;display:block}
+  .cover .tag{padding:0 22mm}
+  .cover h1{font-size:26pt}
+  .cover .sub{margin-top:5mm;font-size:12pt;line-height:1.5;color:var(--steel)}
+  .cover .ja{margin-top:7mm;font-family:'IPAPGothic','IPAGothic',sans-serif;font-size:10pt;letter-spacing:.3em;color:#8f9cb8}
+  .cover .foot{width:100%;padding:0 18mm 12mm;font-size:7.5pt;color:#8f9cb8;letter-spacing:.04em}
+
+  /* problem */
+  .cols3{display:grid;grid-template-columns:repeat(3,1fr);gap:6mm;margin-top:10mm}
+  .card{border:1px solid var(--line);border-radius:3mm;padding:8mm 6mm;background:#fff}
+  .card .n{font-size:28pt;font-weight:700;color:var(--accent);line-height:1;margin-bottom:3mm}
+  .quote{margin-top:18mm;background:var(--navy);color:#fff;border-radius:4mm;padding:14mm 12mm}
+  .quote q{display:block;font-size:19pt;line-height:1.35;font-weight:600;quotes:"“" "”"}
+  .quote p{margin-top:4mm;color:var(--steel)}
+
+  /* governance table */
+  table{width:100%;border-collapse:collapse;margin-top:6mm;font-size:11pt}
+  th{background:var(--navy);color:#fff;text-align:left;padding:4mm 3.5mm;font-weight:600;font-size:10pt}
+  td{padding:4.5mm 3.5mm;border-bottom:1px solid var(--line);color:var(--ink)}
+  td:first-child{font-weight:650}
+  tr:nth-child(even) td{background:var(--paper)}
+  .cycle{display:grid;grid-template-columns:repeat(4,1fr);gap:4mm;margin-top:8mm}
+  .step{background:var(--paper);border-radius:3mm;padding:7mm 4.5mm;border-top:2mm solid var(--accent)}
+  .step b{display:block;font-size:8pt;letter-spacing:.14em;color:var(--accent);margin-bottom:1.5mm}
+  .step h3{font-size:12.5pt}
+  .step p{font-size:10pt;line-height:1.5}
+  .note{font-size:9pt;color:#8a93a5;margin-top:5mm}
+
+  /* human core */
+  .split{display:grid;grid-template-columns:1.1fr 1fr;gap:9mm;margin-top:8mm;align-items:start}
+  .signal{background:var(--navy);border-radius:4mm;padding:9mm;color:#fff}
+  .signal h3{color:#fff}
+  .signal p{color:var(--steel)}
+  .bars{display:flex;align-items:flex-end;gap:3mm;height:38mm;margin:6mm 0 2mm}
+  .bar{flex:1;border-radius:1.5mm 1.5mm 0 0}
+  .legend{display:flex;justify-content:space-between;font-size:8.5pt;color:#8f9cb8}
+  .tick{display:flex;gap:4mm;margin-bottom:8mm}
+  .tick i{flex:0 0 7mm;height:7mm;border-radius:50%;background:var(--accent);color:#fff;font-style:normal;font-size:9pt;font-weight:700;display:flex;align-items:center;justify-content:center;margin-top:.4mm}
+
+  /* value */
+  .aud{display:grid;grid-template-columns:repeat(3,1fr);gap:5mm;margin-top:8mm}
+  .aud .card{padding:7mm 5mm}
+  .aud .lab{font-size:8.5pt;min-height:11mm;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);font-weight:700;margin-bottom:2mm}
+  .aud dl dt{font-size:8.5pt;text-transform:uppercase;letter-spacing:.1em;color:#8a93a5;margin-top:5mm;font-weight:600}
+  .aud dl dd{font-size:10.5pt;line-height:1.45;color:var(--ink);margin-top:.8mm}
+  .evid{display:grid;grid-template-columns:repeat(3,1fr);gap:5mm;margin-top:8mm}
+  .evid .kpi{background:var(--navy);color:#fff;border-radius:3mm;padding:9mm 5mm}
+  .evid .kpi .v{white-space:nowrap;font-size:20pt;font-weight:700;letter-spacing:-.01em}
+  .evid .kpi .v span{color:var(--warm)}
+  .evid .kpi .t{font-size:10pt;color:var(--steel);margin-top:2mm;line-height:1.4}
+
+  /* roadmap */
+  .road{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:8mm}
+  .ph{position:relative;padding:9mm 5.5mm;background:var(--paper);border-right:1px solid #fff}
+  .ph:first-child{border-radius:3mm 0 0 3mm}.ph:last-child{border-radius:0 3mm 3mm 0;border-right:0}
+  .ph .when{font-size:8pt;font-weight:700;letter-spacing:.14em;color:var(--accent)}
+  .ph h3{margin:1.5mm 0}
+  .ph p{font-size:10.5pt}
+  .cta{margin-top:16mm;background:var(--navy);color:#fff;border-radius:4mm;padding:13mm 12mm;display:grid;grid-template-columns:1fr auto;gap:8mm;align-items:center}
+  .cta h2{margin:3mm 0 5mm;font-size:21pt}
+  .cta p{color:var(--steel)}
+  .cta .who{font-size:12pt;line-height:1.6;color:#fff}
+  .cta .who small{display:block;color:var(--steel);font-size:8.5pt}
+  .ph-hold{background:#fff3cd;color:#7a5a00;padding:0 1.5mm;border-radius:1mm}
+  .legal{margin-top:16mm;font-size:8.8pt;line-height:1.5;color:#8a93a5;border-top:1px solid var(--line);padding-top:4mm}
+  .legal b{color:var(--ink)}
+  .mini{width:15mm;height:15mm;display:block}
+</style>
+</head>
+<body>
+
+<!-- 1 · PORTADA -->
+<section class="page dark cover">
+  <img class="logo" src="assets/last-kata-system-logo.jpg" alt="LAST KATA SYSTEM®">
+  <div class="tag">
+    <h1>El Sistema Operativo de Ejecución<br>para Proyectos de Capital</h1>
+    <p class="sub">Conecta lo que se decide en el directorio con lo que pasa en el turno,<br>y lee las señales humanas antes de que lleguen a los números de costo y plazo.</p>
+    <p class="ja">最終の型 · el último patrón</p>
+  </div>
+  <div class="foot">LAST KATA SYSTEM® · Brochure conceptual · Noviembre 2026</div>
+</section>
+
+<!-- 2 · PROBLEMA -->
+<section class="page">
+  <div class="eyebrow">Diagnóstico operativo</div>
+  <h2>El problema en los proyectos CAPEX no está en un solo lugar: está en la conexión.</h2>
+  <p class="lead">Los sistemas actuales gestionan por separado la estrategia, la ejecución en terreno y el comportamiento de los equipos. Lo que queda entre esas capas es donde se pierden plazo y costo.</p>
+  <div class="cols3">
+    <div class="card"><div class="n">01</div><h3>Se mide lo que no podía hacerse</h3><p>Se programa trabajo sin condiciones resueltas, y el cumplimiento castiga a quien no tenía cómo ejecutar.</p></div>
+    <div class="card"><div class="n">02</div><h3>Las restricciones llegan tarde</h3><p>Se descubren el día del turno, cuando ya no queda tiempo ni capacidad operativa para resolverlas.</p></div>
+    <div class="card"><div class="n">03</div><h3>Las señales humanas no se ven</h3><p>Cuando el CPI y el SPI caen, el deterioro del equipo y del clima de trabajo empezó semanas antes.</p></div>
+  </div>
+  <div class="quote">
+    <q>Los proyectos no se pierden en el directorio ni en terreno. Se pierden en la conexión entre ambos.</q>
+    <p>Last Kata System articula la gobernanza, la trazabilidad de restricciones y la voz del equipo en un solo sistema integrado.</p>
+  </div>
+  <div class="folio"><span>LAST KATA SYSTEM®</span><span>2</span></div>
+</section>
+
+<!-- 3 · QUÉ ES -->
+<section class="page">
+  <div class="eyebrow">Arquitectura de gobernanza</div>
+  <h2>Qué es LKS: 4 niveles × 2 partes</h2>
+  <p class="lead">Un solo sistema de reuniones, compromisos y decisiones, con trazabilidad de quién decide qué y por qué, entre el Dueño y el Contratista.</p>
+  <table>
+    <tr><th>Nivel</th><th>Dueño</th><th>Contratista</th><th>Cadencia</th></tr>
+    <tr><td>Estratégico</td><td>Steering Committee</td><td>Sponsor Meeting</td><td>Mensual</td></tr>
+    <tr><td>Gerencial</td><td>Obeya Gerencial</td><td>—</td><td>Semanal</td></tr>
+    <tr><td>Táctico</td><td>Invitado</td><td>Obeya Táctico y Trisemanal</td><td>Semanal</td></tr>
+    <tr><td>Operacional</td><td>Conformidad del turno</td><td>Plan del Día (POD)</td><td>Diaria</td></tr>
+  </table>
+
+  <div class="eyebrow" style="margin-top:20mm">Modelo operativo</div>
+  <h2 style="margin-top:2mm">Cómo trabaja el sistema</h2>
+  <div class="cycle">
+    <div class="step"><b>1 · PLANIFICAR</b><h3>Del maestro al trisemanal</h3><p>Del programa maestro al plan de tres semanas.</p></div>
+    <div class="step"><b>2 · LIBERAR</b><h3>Solo lo ejecutable</h3><p>Solo entra a ejecución lo que tiene condiciones resueltas.</p></div>
+    <div class="step"><b>3 · EJECUTAR</b><h3>El turno registra</h3><p>El turno registra avance y pérdidas con su causa.</p></div>
+    <div class="step"><b>4 · APRENDER</b><h3>Escalar con causa</h3><p>Las pérdidas recurrentes escalan al nivel que puede resolverlas.</p></div>
+  </div>
+  <p class="note">La misma lógica Plan–Do–Check–Act se repite en todos los niveles: cada atraso llega con su causa y cada decisión deja su porqué.</p>
+  <div class="folio"><span>LAST KATA SYSTEM®</span><span>3</span></div>
+</section>
+
+<!-- 4 · NÚCLEO HUMANO -->
+<section class="page">
+  <div class="eyebrow">Núcleo humano y predictor</div>
+  <h2>La seguridad psicológica como señal adelantada</h2>
+  <div class="split">
+    <div>
+      <div class="tick"><i>1</i><div><h3>Medición anónima en rutina</h3><p>Al cierre de cada reunión, LKS mide cómo se siente el equipo para hablar, advertir riesgos y pedir ayuda.</p></div></div>
+      <div class="tick"><i>2</i><div><h3>Se cruza con el desempeño</h3><p>Esa señal se compara con los indicadores técnicos del proyecto (avance, productividad, cumplimiento de lo liberado).</p></div></div>
+      <div class="tick"><i>3</i><div><h3>Alerta temprana de proyecto</h3><p>El sistema avisa con semanas de anticipación, antes de que caigan el costo y el plazo.</p></div></div>
+      <p class="note" style="margin-top:6mm">Modelo propietario de medición, con protección de propiedad intelectual en curso.</p>
+    </div>
+    <div class="signal">
+      <h3>Concepto: la señal humana se mueve primero</h3>
+      <p>Ilustración conceptual, no corresponde a datos reales.</p>
+      <svg viewBox="0 0 220 110" width="100%" style="margin-top:6mm" role="img" aria-label="Ilustración conceptual: la señal humana cae semanas antes que los indicadores de costo y plazo">
+        <line x1="10" y1="95" x2="212" y2="95" stroke="#2a3a5e"/>
+        <polyline fill="none" stroke="#e8b04a" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" points="12,30 45,28 78,34 100,52 125,78 160,88 205,90"/>
+        <polyline fill="none" stroke="#3d7bff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" points="12,32 60,30 110,31 140,36 165,55 190,78 208,88"/>
+        <line x1="100" y1="12" x2="100" y2="95" stroke="#8f9cb8" stroke-dasharray="3 3"/>
+        <line x1="165" y1="12" x2="165" y2="95" stroke="#8f9cb8" stroke-dasharray="3 3"/>
+        <text x="100" y="9" fill="#e8b04a" font-size="7" text-anchor="middle" font-family="Inter">señal humana</text>
+        <text x="165" y="9" fill="#3d7bff" font-size="7" text-anchor="middle" font-family="Inter">CPI / SPI</text>
+        <text x="132" y="106" fill="#c9d1de" font-size="7" text-anchor="middle" font-family="Inter">semanas de anticipación</text>
+        <path d="M102 100 H163" stroke="#c9d1de" stroke-width="1"/>
+      </svg>
+      <div class="legend"><span>Tiempo →</span><span>Estado del proyecto</span></div>
+    </div>
+  </div>
+  <div style="margin-top:22mm">
+    <div class="eyebrow">Qué entrega en el día a día</div>
+    <div class="cols3" style="margin-top:4mm">
+      <div class="card"><h3>Pérdidas con causa</h3><p>Cada hora perdida queda registrada con su causa y su responsable, turno a turno.</p></div>
+      <div class="card"><h3>Restricciones visibles</h3><p>Lo que el Dueño debe liberar se ve en un solo lugar y escala a tiempo.</p></div>
+      <div class="card"><h3>Decisiones con su porqué</h3><p>Todo lo que sube o baja entre Dueño y Contratista queda trazado.</p></div>
+    </div>
+  </div>
+  <div class="folio"><span>LAST KATA SYSTEM®</span><span>4</span></div>
+</section>
+
+<!-- 5 · VALOR Y EVIDENCIA -->
+<section class="page">
+  <div class="eyebrow">Propuesta de valor</div>
+  <h2>Qué gana cada uno</h2>
+  <div class="aud">
+    <div class="card"><div class="lab">Dueños de contratistas e ingeniería</div>
+      <dl><dt>Dolor</dt><dd>Margen que se pierde en esperas y reprocesos.</dd>
+      <dt>Qué entrega LKS</dt><dd>Pérdidas con causa y responsable, turno a turno.</dd>
+      <dt>Indicador</dt><dd>Factor de Productividad</dd></dl></div>
+    <div class="card"><div class="lab">Gerentes de EPCM y servicios</div>
+      <dl><dt>Dolor</dt><dd>Interfaces Dueño–Contratista sin control.</dd>
+      <dt>Qué entrega LKS</dt><dd>Restricciones del Dueño visibles y escaladas a tiempo.</dd>
+      <dt>Indicador</dt><dd>Cumplimiento sobre trabajo liberado</dd></dl></div>
+    <div class="card"><div class="lab">Gerentes generales y directores</div>
+      <dl><dt>Dolor</dt><dd>Desviaciones que llegan tarde al directorio.</dd>
+      <dt>Qué entrega LKS</dt><dd>Alerta anticipada de proyectos en riesgo.</dd>
+      <dt>Indicador</dt><dd>Riesgo de cartera (costo, plazo, equipo)</dd></dl></div>
+  </div>
+
+  <div class="eyebrow" style="margin-top:20mm">Evidencia operativa</div>
+  <h2 style="margin-top:2mm">Resultados en terreno</h2>
+  <p>Casos anonimizados de aplicación del método. Factor de productividad = HH reales / HH ganadas; un valor menor a 1,0 representa sobre-desempeño.</p>
+  <div class="evid">
+    <div class="kpi"><div class="v">1,90 <span>→</span> 0,94</div><div class="t">Factor de productividad<br>Túneles en mina subterránea, ~4 meses</div></div>
+    <div class="kpi"><div class="v">2,43 <span>→</span> 0,96</div><div class="t">Factor de productividad<br>Túnel de evacuación, 4 meses</div></div>
+    <div class="kpi"><div class="v">1,58 <span>→</span> 1,02</div><div class="t">Factor de productividad<br>Sala de chancado primario, 3 meses</div></div>
+  </div>
+  <p class="note">Resultados de casos específicos; no constituyen una garantía de desempeño en otros proyectos.</p>
+  <div class="folio"><span>LAST KATA SYSTEM®</span><span>5</span></div>
+</section>
+
+<!-- 6 · RUTA Y CONTACTO -->
+<section class="page">
+  <div class="eyebrow">Ruta de implementación</div>
+  <h2>Cómo empezamos</h2>
+  <div class="road">
+    <div class="ph"><div class="when">FASE 1 · 2 SEMANAS</div><h3>Diagnóstico</h3><p>Revisión de programa maestro, cadencia de reuniones y mapa actual de pérdidas.</p></div>
+    <div class="ph"><div class="when">FASE 2 · 8–12 SEMANAS</div><h3>Piloto</h3><p>Despliegue en un contrato o frente crítico, con la plataforma LKS y acompañamiento.</p></div>
+    <div class="ph"><div class="when">FASE 3 · CONTINUO</div><h3>Escalamiento</h3><p>Extensión a la cartera completa con indicadores de gobierno para el directorio.</p></div>
+  </div>
+
+  <div class="cta">
+    <div>
+      <div class="eyebrow">Inicie la transformación de sus proyectos</div>
+      <h2>Conversemos sobre un piloto</h2>
+      <div class="who"><b>Jorge Vilches Mercado</b>
+        <small>Director &amp; Creador de Last Kata System</small>
+        <span class="ph-hold">[correo]</span> &nbsp; <span class="ph-hold">[teléfono]</span></div>
+    </div>
+    <img class="mini" style="width:38mm;height:38mm;border-radius:3mm" src="assets/last-kata-system-logo.jpg" alt="LAST KATA SYSTEM®">
+  </div>
+
+  <div class="legal">
+    <b>LAST KATA SYSTEM®</b> es marca registrada en Chile ante el Instituto Nacional de Propiedad Industrial (INAPI), registro N.º 1517729, vigente hasta el 18 de noviembre de 2036. La protección se otorga al conjunto (logotipo y denominación); no se reivindica uso exclusivo sobre la palabra «SYSTEM» considerada aisladamente.
+    <br>Metodología y tecnología con protección de propiedad intelectual en curso. Las cifras corresponden a casos anonimizados y las imágenes son ilustraciones conceptuales.
+  </div>
+  <div class="folio"><span>LAST KATA SYSTEM® · Brochure conceptual · Noviembre 2026</span><span>6</span></div>
+</section>
+
+</body>
+</html>
